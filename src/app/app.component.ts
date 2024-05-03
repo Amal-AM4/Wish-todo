@@ -4,6 +4,7 @@ import { WishItem } from '../shared/models/wishItem';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
+import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 
 
 const filters = [
@@ -18,7 +19,8 @@ const filters = [
   imports: [
     CommonModule,
     FormsModule,
-    WishListComponent
+    WishListComponent,
+    AddWishFormComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -33,19 +35,11 @@ export class AppComponent {
 
   listFilter: any = '0';
 
-  newWishText = '';
-
   title = 'wishlist';
 
   get visibleItems() : WishItem[] {
     return this.items.filter(filters[this.listFilter]);
   }
 
-  addNewWish() {
-    // todo: add wish to items array
-    // clear the textbox
-    this.items.push(new WishItem(this.newWishText));
-    this.newWishText = '';
-  }
 
 }
